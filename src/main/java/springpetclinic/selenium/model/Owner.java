@@ -1,4 +1,4 @@
-package springpetclinic_selenium.model;
+package springpetclinic.selenium.model;
 public class Owner {
     
     private String firstName;

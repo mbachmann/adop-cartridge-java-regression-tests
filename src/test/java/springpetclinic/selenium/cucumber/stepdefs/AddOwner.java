@@ -1,14 +1,17 @@
-package springpetclinic_selenium.cucumber.stepdefs;
+package springpetclinic.selenium.cucumber.stepdefs;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 
-import springpetclinic_selenium.model.Owner;
-import springpetclinic_selenium.utils.Configure;
+import springpetclinic.selenium.model.Owner;
+import springpetclinic.selenium.utils.Configure;
 
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+
+import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -30,18 +33,20 @@ public class AddOwner {
         if(config.getZapEnabled()){
             driver.setProxy(config.getZapIp(), config.getZapPort());
         }
-        driver.get(config.getPetClinicUrl()+"/owners/find.html");
-        driver.findElement(By.xpath("/html/body/div/a")).click();
+        driver.get(config.getPetClinicUrl()+"/owners/find");
+        driver.findElement(By.xpath("/html/body/div/div/a")).click();
         driver.findElement(By.xpath("//input[@id='firstName']")).sendKeys(config.getOwner().getFirstName());
         driver.findElement(By.xpath("//input[@id='lastName']")).sendKeys(config.getOwner().getLastName());
         driver.findElement(By.xpath("//input[@id='address']")).sendKeys(config.getOwner().getAddress());
         driver.findElement(By.xpath("//input[@id='city']")).sendKeys(config.getOwner().getAddress());
         driver.findElement(By.xpath("//input[@id='telephone']")).sendKeys(config.getOwner().getTelephone());
-        driver.findElement(By.xpath("//*[@id='add-owner-form']/div[6]/button")).submit();
+        driver.findElement(By.xpath("//button[@type='submit']")).click();
     }
 
     @Then("^the Pet Owner \"(.*?)\" should be added to the Petclinic Project\\.$")
     public void the_Pet_Owner_should_be_added_to_the_Petclinic_Project(String arg1) throws Throwable {
-    	assertTrue(driver.findElement(By.xpath("/html/body/div/table[1]/tbody/tr[1]/td/b")).getText().equals(arg1));
+    	assertTrue(driver.findElement(By.xpath("/html/body/div/div/table[1]/tbody/tr[1]/td/b")).getText().equals(arg1));
+        // searchUsername (driver, arg1);
     }
+
 }

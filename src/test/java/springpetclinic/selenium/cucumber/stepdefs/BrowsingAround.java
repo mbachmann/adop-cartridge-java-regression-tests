@@ -1,4 +1,4 @@
-package springpetclinic_selenium.cucumber.stepdefs;
+package springpetclinic.selenium.cucumber.stepdefs;
 
 import java.util.List;
 
@@ -6,7 +6,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 
-import springpetclinic_selenium.utils.Configure;
+import springpetclinic.selenium.utils.Configure;
 
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -39,12 +39,12 @@ public class BrowsingAround {
 
 	@Then("^I should be on the vets, \"(.*?)\", page$")
 	public void i_should_be_on_the_vets_page(String arg1) throws Throwable {
-		assertTrue(driver.findElementByXPath("/html/body/div/h2").getText().equals(arg1));
+		assertTrue(driver.findElementByXPath("/html/body/div/div/h2").getText().equals(arg1));
 	}
 
 	@Then("^I should see \"(.*?)\" within h2$")
 	public void i_should_see_within(String arg1) throws Throwable {
-		assertTrue(driver.findElementByXPath("/html/body/div/h2").getText().equals(arg1));
+		assertTrue(driver.findElementByXPath("/html/body/div/div/h2").getText().equals(arg1));
 	}
 
 	@When("^I fill in \"(.*?)\" with \"(.*?)\"$")
@@ -57,8 +57,11 @@ public class BrowsingAround {
 	public void i_press(String arg1) throws Throwable {
 		List<WebElement> buttons = driver.findElements(By.tagName("button"));
 		for (WebElement webElement : buttons) {
-			webElement.submit();
-			assertTrue(true);
+			if (webElement.getText().equals(arg1)){
+				webElement.click();
+				assertTrue(true);
+			}
+
 		}
 	}
 }

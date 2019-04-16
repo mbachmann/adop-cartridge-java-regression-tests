@@ -1,10 +1,10 @@
-package springpetclinic_selenium.utils;
+package springpetclinic.selenium.utils;
 
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.Properties;
 
-import springpetclinic_selenium.model.Owner;
+import springpetclinic.selenium.model.Owner;
 
 public class Configure {
 
