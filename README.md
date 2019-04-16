@@ -1,17 +1,21 @@
-# Spring Petclinic Regression Test Repository
+# Spring Petclinic with Tymeleaf Regression Test Repository 
 
-This repository is used by [adop-cartridge-java](https://github.com/Accenture/adop-cartridge-java) to run regression tests against spring petclinic application.
+This repository is used for testing with selenium and cucumber against spring petclinic application with a Thymeleaf template engine.
 
-# License
-Please view [license information](LICENSE.md) for the software contained on this image.
+https://github.engineering.zhaw.ch/bacn/spring-petclinic-maven-java11
+
 
 ## Documentation
 Documentation will be captured within this README.md and this repository's Wiki.
 
-## Issues
-If you have any problems with or questions about this image, please contact us through a [GitHub issue](https://github.com/Accenture/spring-petclinic-regression-tests/issues).
+## Petclinic instance
+The tests need a running instance of petclinc. The url can be set under main/resources/config.properties. 
+The default is http:://localhost:8080
 
-## Contribute
-You are invited to contribute new features, fixes, or updates, large or small; we are always thrilled to receive pull requests, and do our best to process them as fast as we can.
+## Selenium Tests
+The selenium tests are using the chrome driver. In between the calls is a 2 second break to show each individual 
+call. Due to the dependency of webdrivermanager we do not need to install the crome or firefox driver. Using the 
+selenium remote driver needs an external selenium grid.
 
-Before you start to code, we recommend discussing your plans through a [GitHub issue](https://github.com/Accenture/spring-petclinic-regression-tests/issues), especially for more ambitious contributions. This gives other contributors a chance to point you in the right direction, give you feedback on your design, and help you find out if someone else is working on the same thing.
+## Cucumber Tests
+The cucumber tests are using the HtmlUnitDriver. 
